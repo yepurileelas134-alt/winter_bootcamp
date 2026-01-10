@@ -1,0 +1,43 @@
+# Definition for a binary tree node
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        # Stores the value of the current node
+        self.val = val
+        
+        # Reference to the left child node
+        self.left = left
+        
+        # Reference to the right child node
+        self.right = right
+
+
+class Solution:
+    def preorderTraversal(self, root):
+        # This list will store the final preorder traversal result
+        result = []
+
+        # Recursive helper function to perform preorder traversal
+        def preorder(node):
+            # Base case:
+            # If the current node is None, there is nothing to process
+            # So we return immediately to stop recursion
+            if not node:
+                return
+
+            # Step 1: Visit the root node
+            # In preorder traversal, we process the current node FIRST
+            result.append(node.val)
+
+            # Step 2: Traverse the left subtree
+            # Recursively call preorder on the left child
+            preorder(node.left)
+
+            # Step 3: Traverse the right subtree
+            # Recursively call preorder on the right child
+            preorder(node.right)
+
+        # Start preorder traversal from the root node of the tree
+        preorder(root)
+
+        # Return the collected preorder traversal values
+        return result
